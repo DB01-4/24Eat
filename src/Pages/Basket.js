@@ -6,7 +6,7 @@ import { TableContext } from "../Components/USECONTEXT/TableContext";
 function Basket({ items, addToBasket, removeItemOne, removeItem, clearItems }) {
   const [open, setOpen] = useState(false);
   const [basketHasItems, setbasketHasItems] = useState(false);
-  const { tablekey, setTablekey } = useContext(TableContext);
+  const { tablekey } = useContext(TableContext);
 
   const handleSnackbarOpen = () => {
     if (items.length > 0) {

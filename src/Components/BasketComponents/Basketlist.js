@@ -6,7 +6,6 @@ import { w3cwebsocket as W3CWebSocket } from "websocket";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import { TableContext } from "../USECONTEXT/TableContext";
-import TableCheckAPIService from "../QR-code/TableCheckAPIService";
 
 var ws = new W3CWebSocket("wss://websocket-server-mediaan.herokuapp.com");
 
@@ -21,7 +20,7 @@ export default function Basketlist({
   const { getAccessTokenSilently } = useAuth0();
   const apiUrl = "https://db01-4-menuservice.herokuapp.com/api";
   const tableNr = localStorage.getItem("TableNr");
-  const { tablekey, setTablekey } = useContext(TableContext);
+  const { tablekey } = useContext(TableContext);
   const [check, setCheck] = useState(false);
 
   useEffect(() => {
@@ -34,7 +33,7 @@ export default function Basketlist({
           "for tablekey " + tablekey + " the check resulted in: " + data.data
         );
       });
-  }, [check]);
+  }, [tablekey]);
 
   function wsConnect(msg) {
     setTimeout(function () {
